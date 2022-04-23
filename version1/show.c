@@ -486,10 +486,10 @@ void interpret()
             top--;
             break;
         case CAL:
-            stack[top + 1] = base(stack, b, i.l); //主程序的基地址
-            stack[top + 2] = b;                   //子程序的基地址
-            stack[top + 3] = pc;                  //主程序下一条指令地址（返回地址）
-            b = top + 1;
+            stack[top + 1] = base(stack, b, i.l); //静态链（定义关系中的上一层基址）
+            stack[top + 2] = b;                   //动态链（执行顺序中的上一层基址）
+            stack[top + 3] = pc;                  //返回地址（需要执行的下一条指令地址）
+            b = top + 1;                          //当前栈帧的基址
             pc = i.a;
             break;
         case INT:
