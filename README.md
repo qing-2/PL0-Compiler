@@ -1,10 +1,24 @@
 # PL/0 Compiler without error diagnosis processing
 [视频解释 detailed explanation video](https://space.bilibili.com/595418829/channel/series)
-### Lexer：Lexical analysis is realized in two ways
-1. [a normal way](https://juejin.cn/post/6929689435437006862)
-2. [use DFA](https://juejin.cn/post/6935074305780744223)
-### version1：Relatively complete code just without error diagnosis processing.
+## Lexer：Lexical analysis is realized in two ways
+### 1. A normal way using only if-else
+- 遍历字符流，不需回溯
+- 没用DFA，全程if-else，思路很好理解
+- 识别单词的时候分为：1-标识符关键字,2-整数,3-符合运算符,4-单独字符
+- 类别码是1,2,3...，用enum在头文件里定义了。
+- 单独字符的类型码统一定义在ssym数组里了，关键字的类型码统一定义在wsym数组里了。因为他们是一一对应的，用数组比较简洁。
+- 识别到token就直接输出了，万事从简（懒）...理解思想和方法就可再改进😃
+- C 库函数 `int isalpha(int c)`：判断字符是否是字母，`int isdigit (int c)`：判断字符是否是数字。当然也直接用ASCII码。
+- C 库函数 `int strcmp(const char *str1, const char *str2)` 把 str1 所指向的字符串和 str2 所指向的字符串进行比较。
+
+### 2. Using DFA
+- 遍历字符流，遇到不能识别的字符而结束本次识别时，回退一个字符，让它能被继续识别
+- 重点：有限状态机三段式：（1）定义状态（2）根据现态和当前字符计算次态（3）更新现态   （和数字逻辑里的时序电路FSM设计差不多）
+- 对于细节要耐心，注释和空格回车等字符的处理，获取下一个字符的时机🥰
+
+## version1：Relatively complete code just without error diagnosis processing.
 没有错误诊断处理，遇到错误只是直接报错
+<hr/>
 
 ## 常见问题
 _存储组织上无法回避的问题：_
