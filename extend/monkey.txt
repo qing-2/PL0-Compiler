@@ -1,0 +1,18 @@
+var n;
+var total;
+procedure p;
+    begin
+        while n > 1
+            do 
+            begin 
+                total := (total + 1)*2;
+                n := n - 1;
+            end
+    end;
+
+begin
+    read(var n);
+    total := 1;
+    call p;
+    write(var total);
+end.
