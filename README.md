@@ -1,6 +1,6 @@
 # PL/0 Compiler 
-[视频解释 detailed explanation video](https://space.bilibili.com/595418829/channel/series)<br/>
-[文字解释 csdn](https://blog.csdn.net/qq_44850725/article/details/122564298)
+[视频解释](https://space.bilibili.com/595418829/channel/series)<br/>
+[文字解释](https://blog.csdn.net/qq_44850725/article/details/122564298)
 ## Lexer：Lexical analysis is realized in two ways
 ### 1. A normal way using only if-else
 - 遍历字符流，不需回溯
