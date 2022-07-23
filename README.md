@@ -1,4 +1,4 @@
-# PL/0 Compiler without error diagnosis processing
+# PL/0 Compiler 
 [视频解释 detailed explanation video](https://space.bilibili.com/595418829/channel/series)<br/>
 [文字解释 csdn](https://blog.csdn.net/qq_44850725/article/details/122564298)
 ## Lexer：Lexical analysis is realized in two ways
@@ -14,11 +14,18 @@
 
 ### 2. Using DFA
 - 遍历字符流，遇到不能识别的字符而结束本次识别时，回退一个字符，让它能被继续识别
-- 重点：有限状态机三段式：（1）定义状态（2）根据现态和当前字符计算次态（3）更新现态   （和数字逻辑里的时序电路FSM设计差不多）
+- 重点：有限状态机三段式：（1）定义状态（2）根据现态和当前字符计算次态（3）更新现态   （和数字逻辑里的时序电路FSM设计一样）
 - 对于细节要耐心，注释和空格回车等字符的处理，获取下一个字符的时机🥰
 
 ## version1：Relatively complete code just without error diagnosis processing.
 没有错误诊断处理，遇到错误只是直接报错
+
+## extend：功能完整，扩展如下⭐
+- I/O 的功能扩展：增加格式化输入、格式化输出。
+- 数据结构的扩展：增加浮点数。
+- 增加数组功能：实现整型数组和浮点型数组。
+- 浮点数操作：实现浮点数向下取整和向上取整。
+- 次方函数：2次方，3次方系统函数
 <hr/>
 
 ## 常见问题
