@@ -533,10 +533,10 @@ void block()
         if (sym == SYM_CONST)
         {
             getsym();
-            while (sym == SYM_IDENTIFIER)
-            { //循环处理id1=num1,id2=num2,……
+            if (sym == SYM_IDENTIFIER)
+            {
                 constdeclaration();
-                while (sym == SYM_COMMA)
+                while (sym == SYM_COMMA) //循环处理id1=num1,id2=num2,……
                 {
                     getsym();
                     constdeclaration();
@@ -556,7 +556,7 @@ void block()
         else if (sym == SYM_VAR)
         {
             getsym();
-            while (sym == SYM_IDENTIFIER)
+            if (sym == SYM_IDENTIFIER)
             {
                 vardeclaration();
                 while (sym == SYM_COMMA)
